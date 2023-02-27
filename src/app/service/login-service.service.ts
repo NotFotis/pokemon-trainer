@@ -1,10 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, of, switchMap, tap } from 'rxjs';
+import { map, Observable, of, switchMap } from 'rxjs';
 import { environmet } from 'src/environments/environment';
-import { StorageKeys } from '../enums/storage-keys.enums';
 import { User } from '../models/user.model';
-import { StorageUtil } from '../utils/storage.util';
 
 const {apiUsers, apiKey} = environmet;
 
@@ -25,11 +23,7 @@ export class LoginServiceService {
           }
           //user exists
           return of(user); //return the user
-        }),
-        //store the username to local storage
-        tap( (user: User) => {
-            StorageUtil.storageSave<User>(StorageKeys.User, user);  //saves at local storage the user object with the key of StorageKeys.User
-        } )
+        })
       )
   }
 

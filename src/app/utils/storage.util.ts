@@ -4,7 +4,7 @@ export class StorageUtil{
         localStorage.setItem(key, JSON.stringify(value));
     }
     
-    public static storageRead<T>(key: string): T | null {
+    public static storageRead<T>(key: string): T | undefined {
         const storageValue = localStorage.getItem(key);
     
         try{
@@ -12,11 +12,11 @@ export class StorageUtil{
                 return JSON.parse(storageValue) as T;   //return the storageValue in json format
             }
             //storageValue is empty
-            return null;  //return null
+            return undefined;  //return undefined
     
         }catch(error){
             localStorage.removeItem(key); //remove the saved item
-            return null;
+            return undefined; //return undefined
         }
     }
 }
