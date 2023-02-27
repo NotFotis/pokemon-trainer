@@ -7,7 +7,7 @@ import { Pokemon } from 'src/app/models/pokemon.model';
   styleUrls: ['./pokemon-list.component.css']
 })
 export class PokemonListComponent implements OnInit{
-  @Input() pokemons:Pokemon[]=[];
+  @Input() pokemons: Pokemon[] = [];
   constructor(){}
   ngOnInit(): void {
       

@@ -7,10 +7,10 @@ h1{
     color: rgb(255, 183, 0);
     font-weight: bolder;
     font-size: large;
-    text-shadow: 2px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;;
+    text-shadow: 2px 0 blue, 0 1px blue, 1px 0 blue, 0 -1px blue;
 }
 
 div{
-    background-color: rgba(246, 70, 76, 0.915);
+    background-color:rgba(246, 40, 47, 0.915);
     padding: 5px;
 }
