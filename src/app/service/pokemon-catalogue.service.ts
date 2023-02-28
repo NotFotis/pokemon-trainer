@@ -46,4 +46,7 @@ get loading():boolean{
       }
     })
   }
+  public pokemonByName(name: string): PokemonList | undefined{
+    return this.pokemons.find((pokemon: PokemonList)=> pokemon.results.name===name)
+  }
 }
