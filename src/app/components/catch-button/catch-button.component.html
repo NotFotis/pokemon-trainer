@@ -2,6 +2,11 @@
     <button
         (click)="onCatchClick()" 
         class="border border-slate-300 rounded flex justify-center items-center p-2">
+        <span *ngIf="isFavourite; then favourite else notFavourite" class="material-icons"></span>
+        <ng-template #favourite>
+            <span class="material-icons">favorite</span> 
+        </ng-template>
+        <ng-template #notFavourite><span class="material-icons">favorite_border</span> </ng-template>
         <span class="material-icons">save</span>
     </button>
 </aside>
