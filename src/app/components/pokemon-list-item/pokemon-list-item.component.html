@@ -1,9 +1,9 @@
 <li *ngIf="pokemon" class="mb-4 shadow bg-slate-50 rounded relative">
     <section class="p-4">
-    <img [src]="pokemon.results[0].url" [alt]="pokemon.results[0].name" class="block w-60">
+    <img [src]="pokemon.results.url" [alt]="pokemon.results.name" class="block w-60">
     </section>
     <section class="p-4">
-        <span> {{ pokemon.results[0].name}}</span>
+        <span> {{ pokemon.results.name }}</span>
     </section>
-    <app-catch-button [PokemonName]="pokemon.results[0].name"></app-catch-button>
+    <app-catch-button [PokemonName]="pokemon.results.name"></app-catch-button>
 </li>

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PokemonList } from '../models/pokemon.model';
+import { Pokemon } from '../models/pokemon.model';
 import { User } from '../models/user.model';
 import { PokemonCatalogueService } from './pokemon-catalogue.service';
 import { UserServiceService } from './user-service.service';
@@ -29,7 +29,7 @@ get loading(): boolean{
       
     }
     const user: User =this.userService.user;
-    const pokemon : PokemonList | undefined = this.pokemonService.pokemonByName(PokemonName);
+    const pokemon : Pokemon | undefined = this.pokemonService.pokemonByName(PokemonName);
     if(!pokemon){
       throw new Error("No pokemon with name:" + PokemonName);
       

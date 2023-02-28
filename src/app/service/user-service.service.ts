@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { StorageKeys } from '../enums/storage-keys.enums';
-import { Pokemon, PokemonList} from '../models/pokemon.model';
+
+import { Pokemon} from '../models/pokemon.model';
+
 import { User } from '../models/user.model';
 import { StorageUtil } from '../utils/storage.util';
 
