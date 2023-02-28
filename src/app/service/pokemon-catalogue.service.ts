@@ -2,17 +2,17 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { PokemonList } from '../models/pokemon.model';
+import { Pokemon } from '../models/pokemon.model';
 const {apiPokemon}= environment;
  
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonCatalogueService {
-private _pokemons: PokemonList[]= [];
+private _pokemons: Pokemon[]= [];
 private _error: string="";
 private _loading: boolean =false;
-get pokemons(): PokemonList[]{
+get pokemons(): Pokemon[]{
   return this._pokemons;
 }
 get error(): string{
@@ -26,8 +26,11 @@ get loading():boolean{
    * findAllPokemons
    */
   public findAllPokemons(): void {
+    if(this._pokemons.length>0 || this.loading){
+      return;
+    }
     this._loading=true;
-    this.http.get<PokemonList[]>(apiPokemon)
+    this.http.get<Pokemon[]>(apiPokemon)
     .pipe(
      finalize(()=>{
       this._loading=false;
@@ -35,7 +38,7 @@ get loading():boolean{
      )
     )
     .subscribe({
-      next: (pokemons: PokemonList[]) => {
+      next: (pokemons: Pokemon[]) => {
         this._pokemons = pokemons;
 
       },
@@ -46,7 +49,7 @@ get loading():boolean{
       }
     })
   }
-  public pokemonByName(name: string): PokemonList | undefined{
-    return this.pokemons.find((pokemon: PokemonList)=> pokemon.results.name===name)
+  public pokemonByName(name: string): Pokemon | undefined{
+    return this.pokemons.find((pokemon: Pokemon)=> pokemon.name===name)
   }
 }
