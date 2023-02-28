@@ -4,6 +4,7 @@ import { finalize } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { PokemonList } from '../models/pokemon.model';
 const {apiPokemon}= environment;
+ 
 @Injectable({
   providedIn: 'root'
 })
@@ -22,9 +23,9 @@ get loading():boolean{
 }
   constructor(private readonly http: HttpClient) { }
   /**
-   * findAllPokemon
+   * findAllPokemons
    */
-  public findAllPokemon(): void {
+  public findAllPokemons(): void {
     this._loading=true;
     this.http.get<PokemonList[]>(apiPokemon)
     .pipe(

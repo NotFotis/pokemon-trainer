@@ -1,0 +1,20 @@
+fieldset{
+    padding: 10px;
+}
+
+input{
+    color: black;
+}
+
+label{
+    padding: 5px;
+}
+button{
+    margin: 10px;
+    margin-bottom: 15px;
+    background-color: rgb(255, 183, 0);
+}
+
+button:active {
+    transform: translateY(4px);
+  }
