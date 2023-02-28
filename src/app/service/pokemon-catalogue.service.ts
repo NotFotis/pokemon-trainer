@@ -44,7 +44,7 @@ get loading():boolean{
     )
     .subscribe({
       next: (data: Data) => {
-        console.log(data);        
+        
         this._pokemons = data.results;
 
       },
