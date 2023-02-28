@@ -13,12 +13,12 @@ export class ProfilePage implements OnInit {
 
     return this.userService.user;
   }
-  // get favourites(): Pokemon[]{
-  //   if(this.userService.user){
-  //     //return this.userService.user.favourites
-  //   }
-  //   return [];
-  // }
+  get favourites(): Pokemon[]{
+    if(this.userService.user){
+      return this.userService.user.favourites
+    }
+    return [];
+  }
 constructor(
   private userService: UserServiceService
 ){}
