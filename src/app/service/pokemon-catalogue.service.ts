@@ -44,8 +44,7 @@ get loading():boolean{
     )
     .subscribe({
       next: (data: Data) => {
-        console.log(data);
-        
+        console.log(data);        
         this._pokemons = data.results;
 
       },
@@ -60,4 +59,5 @@ get loading():boolean{
     return this.pokemons.find((pokemon: Pokemon)=> pokemon.name)
 
   }
+
 }
