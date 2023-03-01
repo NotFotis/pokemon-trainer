@@ -4,6 +4,7 @@ import { finalize, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
+import { SessionUtil } from '../utils/session.util';
 import { PokemonCatalogueService } from './pokemon-catalogue.service';
 import { UserServiceService } from './user-service.service';
 
@@ -36,7 +37,7 @@ get loading(): boolean{
     }
 
     if(this.userService.inFavourites(PokemonName)){
-      throw new Error("Pokemon already in favourites");
+      alert("Pokemon already in favourites");
     }
 
     const headers = new HttpHeaders({
@@ -50,6 +51,7 @@ get loading(): boolean{
       if (!pokemonList.includes(PokemonName)){  //if this pokemon is not at the list
         pokemonList.push(PokemonName);          //add the pokemon to the list
       }
+      SessionUtil.storageSave("collection",pokemonList); //saves the current collection of trainer pokemons 
       
 
     return this.http.patch<Trainer>(`${apiUsers}/${user.id}`,{

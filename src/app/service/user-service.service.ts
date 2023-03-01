@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { StorageKeys } from '../enums/storage-keys.enums';
-
 import { Pokemon} from '../models/pokemon.model';
-
 import { Trainer } from '../models/trainer.model';
+import { SessionUtil } from '../utils/session.util';
 import { StorageUtil } from '../utils/storage.util';
 
 @Injectable({
@@ -12,6 +11,7 @@ import { StorageUtil } from '../utils/storage.util';
 export class UserServiceService {
 
   private _user?: Trainer;
+  private _session: string | undefined;
 
   get user(): Trainer | undefined {
     return this._user;
@@ -24,13 +24,20 @@ export class UserServiceService {
 
   constructor() {
     this._user = StorageUtil.storageRead<Trainer>(StorageKeys.User);
+    SessionUtil.storageSave("collection",this._user?.pokemon); //saves the current collection of trainer pokemons
+    if (SessionUtil.storageRead("collection") === undefined){
+      this._session = "";
+    }else{
+      this._session = SessionUtil.storageRead("collection"); //reads the current collection of trainers pokemon
+    }
+    
    }
 
    public inFavourites(PokemonName: string): boolean {
     if(this._user ){
-
-      // return Boolean(this.user?.pokemonCaught.find((pokemon: Pokemon) => pokemon.name === PokemonName));
-
+      console.log(JSON.stringify( this._session));
+      
+      return Boolean(JSON.stringify( this._session).includes(`"${PokemonName}"`)); //checks if the required pokemon is already in collection 
     }
     return false;
    }
