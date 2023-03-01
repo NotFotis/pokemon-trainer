@@ -1,9 +1,10 @@
 <li *ngIf="pokemon" class="mb-4 shadow bg-slate-50 rounded relative">
+    <app-catch-button></app-catch-button>
     <section class="p-4">
         <script>           
 pokemon_id = pokemon.url.split("/")[-2]
         </script>
-    <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.url.split(&quot;quoted&quot;)[-2]+ '.png'" [alt]="pokemon.name" class="block w-60">
+    <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.url.split('/').slice(-2)[0] + '.png'" [alt]="pokemon.name" class="block w-60">
     </section>
     <section class="p-4">
         <span> {{ pokemon.name }}</span>

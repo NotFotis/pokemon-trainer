@@ -14,9 +14,9 @@ export class ProfilePage implements OnInit {
 
     return this.userService.user;
   }
-  get favourites(): Pokemon[]{
+  get pokemonCaught(): Pokemon[]{
     if(this.userService.user){
-      // return this.userService.user.favourites
+        // return this.userService.user.pokemonCaught;
     }
     return [];
   }

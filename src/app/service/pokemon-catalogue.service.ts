@@ -15,7 +15,6 @@ export class PokemonCatalogueService {
 private _pokemons: Pokemon[]= [];
 private _error: string="";
 private _loading: boolean =false;
-private _imageURL: string="";
 get pokemons(): Pokemon[]{
   return this._pokemons;
 }
@@ -62,9 +61,6 @@ get loading():boolean{
     return this.pokemons.find((pokemon: Pokemon)=> pokemon.name)
 
   }
-  getImageUrl(url: string) {
-    const id = url.split('/').slice(-2)[0];
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-  }
+  
 
 }

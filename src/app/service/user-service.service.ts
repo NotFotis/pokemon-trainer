@@ -42,8 +42,8 @@ export class UserServiceService {
    }
 
    public removeFromFavourites(PokemonName:string): void{
-    if(this._user)[
+    if(this._user){
       // this._user.pokemonCaught=this._user?.pokemonCaught.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
-    ]
+    }
    }
 }

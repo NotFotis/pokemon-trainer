@@ -47,7 +47,7 @@ get loading(): boolean{
       this._loading=true;
 
     return this.http.patch<Trainer>(`${apiUsers}/${user.id}`,{
-      favourites:[...user.pokemonCaught,pokemon]
+      pokemon:[...user.pokemonCaught,pokemon]
     },{
       headers
     })
