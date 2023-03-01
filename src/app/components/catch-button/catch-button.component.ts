@@ -35,6 +35,7 @@ ngOnInit(): void {
     .subscribe({
       next:(response: Trainer) =>{
         this.loading=false;
+        window.location.reload();
           console.log("NEXT", response);
           
       },
@@ -44,7 +45,12 @@ ngOnInit(): void {
       }
     })
     //the pokemon added to the trainers' list
-    alert("Oh yeah, you got it! " + this.PokemonName );
+    //Checking if the selected pokemon is at collection list to show the proper alert 
+    if( this.isFavourite ){
+      alert(`You have succesfully remove the pokemon ${this.PokemonName} from the collection!`);
+    }else{
+      alert(`Oh yeah, you got it! Now ${this.PokemonName} belongs to your pokemons colllection!`);
+    }
   }
 
 }

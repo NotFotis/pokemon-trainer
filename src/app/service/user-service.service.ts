@@ -37,7 +37,7 @@ export class UserServiceService {
     if(this._user ){
       console.log(JSON.stringify( this._session));
       
-      return Boolean(JSON.stringify( this._session).includes(`"${PokemonName}"`)); //checks if the required pokemon is already in collection 
+      return Boolean(this._user?.pokemon.find((pokemon: Pokemon) => pokemon.name === PokemonName)); 
     }
     return false;
    }
