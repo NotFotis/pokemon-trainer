@@ -1,9 +1,10 @@
 <li *ngIf="pokemon" class="mb-4 shadow bg-slate-50 rounded relative">
-    <section class="p-4">
-    <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.url.slice(pokemon.url.length - 2).slice(0,1) + '.png'" [alt]="pokemon.name" class="block w-60">
+    <section class="p-4 flex">
+    <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.url.split('/').slice(-2)[0] + '.png'" [alt]="pokemon.name" class="block w-60">
+    <p> {{ pokemon.name }}</p>
     </section>
-    <section class="p-4">
-        <span> {{ pokemon.name }}</span>
-    </section>
+    <!-- <section class="p-4">
+       
+    </section> -->
     <app-catch-button [PokemonName]="pokemon.name"></app-catch-button>
 </li>

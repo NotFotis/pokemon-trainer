@@ -4,6 +4,7 @@ import { finalize } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from '../models/pokemon.model';
 import { Data } from '../models/data.model';
+import { SessionUtil } from '../utils/session.util';
 const {apiPokemon}= environment;
  
 @Injectable({
@@ -38,7 +39,9 @@ get loading():boolean{
     .subscribe({
       next: (data: Data) => {
         
-        this._pokemons = data.results;
+        this._pokemons = data.results; //passing the pokemon list
+        
+        SessionUtil.storageSave("pokemons", data.results); //saving the pokemon list into session storage
 
       },
       error: (error: HttpErrorResponse) => {
@@ -48,6 +51,17 @@ get loading():boolean{
       }
     })
   }
+
+  public pokemonsFromSession(data: Pokemon[] | undefined): void {
+    this._loading=true;
+
+    if (data !== undefined){
+      this._pokemons = data;
+    }
+
+    this._loading=false;
+  }
+
   public pokemonByName(name: string): Pokemon | undefined{
     return this.pokemons.find((pokemon: Pokemon)=> pokemon.name)
   }
