@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { PokemonCatalogueService } from 'src/app/service/pokemon-catalogue.service';
+import { SessionUtil } from 'src/app/utils/session.util';
 
 @Component({
   selector: 'app-pokemon-catalogue',
@@ -26,8 +27,11 @@ export class PokemonCataloguePage implements OnInit {
   ){}
   
   ngOnInit(): void {
+    if (SessionUtil.storageRead("pokemons") === undefined){
       this.pokemonCatalogueService.findAllPokemons();
-      
+    }else{
+      this.pokemonCatalogueService.pokemonsFromSession( SessionUtil.storageRead("pokemons") );
+    }
   }
 }
  

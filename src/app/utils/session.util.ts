@@ -1,12 +1,12 @@
-export class StorageUtil{
-    /* This util is made for use of the local storage of the browser */
+export class SessionUtil{
+    /* This util is made for use of the session storage of the browser */
     
     public static storageSave<T>(key: string, value: T): void {
-        localStorage.setItem(key, JSON.stringify(value));
+        sessionStorage.setItem(key, JSON.stringify(value));
     }
     
     public static storageRead<T>(key: string): T | undefined {
-        const storageValue = localStorage.getItem(key);
+        const storageValue = sessionStorage.getItem(key);
     
         try{
             if(storageValue) {                          //if storageValue has something
@@ -16,7 +16,7 @@ export class StorageUtil{
             return undefined;  //return undefined
     
         }catch(error){
-            localStorage.removeItem(key); //remove the saved item
+            sessionStorage.removeItem(key); //remove the saved item
             return undefined; //return undefined
         }
     }
