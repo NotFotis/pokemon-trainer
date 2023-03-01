@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Data, Result } from 'src/app/models/data.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
-import { User } from 'src/app/models/user.model';
+import { Trainer } from 'src/app/models/trainer.model';
 import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
@@ -9,13 +10,13 @@ import { UserServiceService } from 'src/app/service/user-service.service';
   styleUrls: ['./profile.page.css']
 })
 export class ProfilePage implements OnInit {
-  get user(): User | undefined{
+  get user(): Trainer | undefined{
 
     return this.userService.user;
   }
   get favourites(): Pokemon[]{
     if(this.userService.user){
-      return this.userService.user.favourites
+      // return this.userService.user.favourites
     }
     return [];
   }

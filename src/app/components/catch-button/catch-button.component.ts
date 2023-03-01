@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user.model';
+import { Trainer } from 'src/app/models/trainer.model';
 import { FavouriteService } from 'src/app/service/favourite.service';
 import { UserServiceService } from 'src/app/service/user-service.service';
 
@@ -31,7 +31,7 @@ ngOnInit(): void {
   onCatchClick(): void {
     this.favouriteService.addToFavourtites(this.PokemonName)
     .subscribe({
-      next:(response: User) =>{
+      next:(response: Trainer) =>{
           console.log("NEXT", response);
           
       },

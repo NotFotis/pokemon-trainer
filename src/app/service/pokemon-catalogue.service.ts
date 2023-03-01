@@ -15,6 +15,7 @@ export class PokemonCatalogueService {
 private _pokemons: Pokemon[]= [];
 private _error: string="";
 private _loading: boolean =false;
+private _imageURL: string="";
 get pokemons(): Pokemon[]{
   return this._pokemons;
 }
@@ -24,6 +25,7 @@ get error(): string{
 get loading():boolean{
   return this._loading;
 }
+
   constructor(private readonly http: HttpClient) { }
   /**
    * findAllPokemons
@@ -46,6 +48,7 @@ get loading():boolean{
       next: (data: Data) => {
         
         this._pokemons = data.results;
+        
 
       },
       error: (error: HttpErrorResponse) => {
@@ -58,6 +61,10 @@ get loading():boolean{
   public pokemonByName(name: string): Pokemon | undefined{
     return this.pokemons.find((pokemon: Pokemon)=> pokemon.name)
 
+  }
+  getImageUrl(url: string) {
+    const id = url.split('/').slice(-2)[0];
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
   }
 
 }

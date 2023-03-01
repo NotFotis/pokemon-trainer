@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { finalize, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Pokemon } from '../models/pokemon.model';
-import { User } from '../models/user.model';
+import { Trainer } from '../models/trainer.model';
 import { PokemonCatalogueService } from './pokemon-catalogue.service';
 import { UserServiceService } from './user-service.service';
 
@@ -23,12 +23,12 @@ get loading(): boolean{
     private readonly  userService: UserServiceService
   ) { }
 
-  public addToFavourtites(PokemonName: string): Observable<User> {
+  public addToFavourtites(PokemonName: string): Observable<Trainer> {
     if(!this.userService.user){
       throw new Error("There is no user");
       
     }
-    const user: User =this.userService.user;
+    const user: Trainer =this.userService.user;
     const pokemon : Pokemon | undefined = this.pokemonService.pokemonByName(PokemonName);
     if(!pokemon){
       throw new Error("No pokemon with name:" + PokemonName);
@@ -46,13 +46,13 @@ get loading(): boolean{
 
       this._loading=true;
 
-    return this.http.patch<User>(`${apiUsers}/${user.id}`,{
-      favourites:[...user.favourites,pokemon]
+    return this.http.patch<Trainer>(`${apiUsers}/${user.id}`,{
+      favourites:[...user.pokemonCaught,pokemon]
     },{
       headers
     })
     .pipe(
-      tap((updatedUser: User)=>{
+      tap((updatedUser: Trainer)=>{
         this.userService.user=updatedUser;
       }),
       finalize(() => {

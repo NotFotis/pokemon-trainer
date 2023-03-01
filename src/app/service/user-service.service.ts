@@ -3,7 +3,7 @@ import { StorageKeys } from '../enums/storage-keys.enums';
 
 import { Pokemon} from '../models/pokemon.model';
 
-import { User } from '../models/user.model';
+import { Trainer } from '../models/trainer.model';
 import { StorageUtil } from '../utils/storage.util';
 
 @Injectable({
@@ -11,25 +11,25 @@ import { StorageUtil } from '../utils/storage.util';
 })
 export class UserServiceService {
 
-  private _user?: User;
+  private _user?: Trainer;
 
-  get user(): User | undefined {
+  get user(): Trainer | undefined {
     return this._user;
   }
 
-  set user(user: User | undefined) {
-    StorageUtil.storageSave<User>(StorageKeys.User, user!);
+  set user(user: Trainer | undefined) {
+    StorageUtil.storageSave<Trainer>(StorageKeys.User, user!);
     this._user = user;
   }
 
   constructor() {
-    this._user = StorageUtil.storageRead<User>(StorageKeys.User);
+    this._user = StorageUtil.storageRead<Trainer>(StorageKeys.User);
    }
 
    public inFavourites(PokemonName: string): boolean {
     if(this._user ){
 
-      // return Boolean(this.user?.favourites.find((pokemon: Pokemon) => pokemon.name === PokemonName));
+      // return Boolean(this.user?.pokemonCaught.find((pokemon: Pokemon) => pokemon.name === PokemonName));
 
     }
     return false;
@@ -37,13 +37,13 @@ export class UserServiceService {
 
    public addToFavourites(pokemon: Pokemon): void {
     if(this._user)[
-      this._user.favourites.push(pokemon.name)
+      this._user.pokemonCaught.push(pokemon.name)
     ]
    }
 
    public removeFromFavourites(PokemonName:string): void{
     if(this._user)[
-      // this._user.favourites=this._user?.favourites.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
+      // this._user.pokemonCaught=this._user?.pokemonCaught.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
     ]
    }
 }

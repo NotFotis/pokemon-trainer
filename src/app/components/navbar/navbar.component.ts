@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user.model';
+import { Trainer } from 'src/app/models/trainer.model';
 import { UserServiceService } from 'src/app/service/user-service.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { UserServiceService } from 'src/app/service/user-service.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent  implements OnInit{
-  get user(): User | undefined{
+  get user(): Trainer | undefined{
     return this.userService.user;
   }
 constructor(
