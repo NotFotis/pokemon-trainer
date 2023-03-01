@@ -33,6 +33,7 @@ ngOnInit(): void {
     .subscribe({
       next:(response: Trainer) =>{
           console.log("NEXT", response);
+          this.isFavourite=this.userService.inFavourites(this.PokemonName);
           
       },
       error:(error: HttpErrorResponse) => {

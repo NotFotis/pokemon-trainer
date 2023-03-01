@@ -36,6 +36,7 @@ get loading(): boolean{
     }
 
     if(this.userService.inFavourites(PokemonName)){
+      this.userService.removeFromFavourites(PokemonName);
       throw new Error("Pokemon already in favourites");
     }
 
@@ -47,7 +48,7 @@ get loading(): boolean{
       this._loading=true;
 
     return this.http.patch<Trainer>(`${apiUsers}/${user.id}`,{
-      pokemon:[...user.pokemonCaught,pokemon]
+      pokemon:[...user.pokemon]
     },{
       headers
     })

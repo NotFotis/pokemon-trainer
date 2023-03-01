@@ -69,8 +69,8 @@ get loading():boolean{
     this._loading=false;
   }
 
-  public pokemonByName(name: string): Pokemon | undefined{
-    return this.pokemons.find((pokemon: Pokemon)=> pokemon.name)
+  public pokemonByName(PokemonName: string): Pokemon | undefined{
+    return this._pokemons.find((pokemon: Pokemon)=> pokemon.name===PokemonName)
 
   }
   
