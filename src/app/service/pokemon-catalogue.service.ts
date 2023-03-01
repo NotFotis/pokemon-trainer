@@ -53,8 +53,6 @@ get loading():boolean{
       },
       error: (error: HttpErrorResponse) => {
         this._error=error.message;
-        
-
       }
     })
   }
@@ -73,6 +71,4 @@ get loading():boolean{
     return this._pokemons.find((pokemon: Pokemon)=> pokemon.name===PokemonName)
 
   }
-  
-
 }
