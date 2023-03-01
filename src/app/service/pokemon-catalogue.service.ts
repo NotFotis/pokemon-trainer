@@ -15,7 +15,6 @@ export class PokemonCatalogueService {
 private _pokemons: Pokemon[]= [];
 private _error: string="";
 private _loading: boolean =false;
-private _imageURL: string="";
 get pokemons(): Pokemon[]{
   return this._pokemons;
 }
@@ -68,8 +67,8 @@ get loading():boolean{
     this._loading=false;
   }
 
-  public pokemonByName(name: string): Pokemon | undefined{
-    return this.pokemons.find((pokemon: Pokemon)=> pokemon.name)
+  public pokemonByName(PokemonName: string): Pokemon | undefined{
+    return this._pokemons.find((pokemon: Pokemon)=> pokemon.name===PokemonName)
 
   }
 }

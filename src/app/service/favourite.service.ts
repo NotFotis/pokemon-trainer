@@ -24,7 +24,7 @@ get loading(): boolean{
     private readonly  userService: UserServiceService
   ) { }
 
-  public addToFavourtites(PokemonName: string): Observable<Trainer> {
+  public addToFavourites(PokemonName: string): Observable<Trainer> {
     if(!this.userService.user){
       throw new Error("There is no user");
       
@@ -37,8 +37,9 @@ get loading(): boolean{
     }
 
     if(this.userService.inFavourites(PokemonName)){
-      alert("Pokemon already in favourites");
-    }
+      this.userService.removeFromFavourites(PokemonName);
+    }else
+    this.userService.addToFavourites(pokemon);
 
     const headers = new HttpHeaders({
       'content-type': 'application/json',
@@ -47,15 +48,14 @@ get loading(): boolean{
 
       this._loading=true;
 
-      let pokemonList = user.pokemon;           //initiating the list with the already caught pokemons
-      if (!pokemonList.includes(PokemonName)){  //if this pokemon is not at the list
-        pokemonList.push(PokemonName);          //add the pokemon to the list
-      }
-      SessionUtil.storageSave("collection",pokemonList); //saves the current collection of trainer pokemons 
+      //let pokemonList = user.pokemon;           //initiating the list with the already caught pokemons
+      // if (!pokemonList.includes(PokemonName)){  //if this pokemon is not at the list
+      //   pokemonList.push(PokemonName);          //add the pokemon to the list
+      // }
       
 
     return this.http.patch<Trainer>(`${apiUsers}/${user.id}`,{
-      pokemon: pokemonList  //add the updated list at the api
+      pokemon:[...user.pokemon]
     },{
       headers
     })

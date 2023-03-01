@@ -10,13 +10,14 @@ import { UserServiceService } from 'src/app/service/user-service.service';
   styleUrls: ['./catch-button.component.css']
 })
 export class CatchButtonComponent implements OnInit{
+  public loading : boolean=false;
   public isFavourite: boolean = false;
 
   @Input() PokemonName: string = ""; //initiate the number to none id
 
-  get loading(): boolean{
-    return this.favouriteService.loading;
-  }
+  // get loading(): boolean{
+  //   return this.favouriteService.loading;
+  // }
   
 constructor(
   private userService: UserServiceService,
@@ -29,10 +30,11 @@ ngOnInit(): void {
 }
 
   onCatchClick(): void {
-    this.favouriteService.addToFavourtites(this.PokemonName)
+    this.loading=true;
+    this.favouriteService.addToFavourites(this.PokemonName)
     .subscribe({
       next:(response: Trainer) =>{
-        this.isFavourite = true;
+        this.loading=false;
           console.log("NEXT", response);
           
       },

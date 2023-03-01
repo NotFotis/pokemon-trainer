@@ -44,13 +44,13 @@ export class UserServiceService {
 
    public addToFavourites(pokemon: Pokemon): void {
     if(this._user)[
-      this._user.pokemon.push(pokemon.name)
+      this._user.pokemon.push(pokemon)
     ]
    }
 
    public removeFromFavourites(PokemonName:string): void{
-    if(this._user)[
-      // this._user.pokemonCaught=this._user?.pokemonCaught.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
-    ]
+    if(this._user){
+      this._user.pokemon=this._user?.pokemon.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
+    }
    }
 }

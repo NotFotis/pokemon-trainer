@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Data, Result } from 'src/app/models/data.model';
+import { Data } from '@angular/router';
+import { Result } from 'src/app/models/data.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { Trainer } from 'src/app/models/trainer.model';
 import { UserServiceService } from 'src/app/service/user-service.service';
@@ -14,11 +15,11 @@ export class ProfilePage implements OnInit {
 
     return this.userService.user;
   }
-  get favourites(): Pokemon[]{
+  get pokemon(): Pokemon[] {
     if(this.userService.user){
-      // return this.userService.user.favourites
+      return this.userService.user.pokemon
     }
-    return [];
+    return []
   }
 constructor(
   private userService: UserServiceService
