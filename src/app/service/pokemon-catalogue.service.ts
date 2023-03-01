@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize } from 'rxjs';
 import { environment } from 'src/environments/environment';
+
 import { Pokemon } from '../models/pokemon.model';
 import { Data } from '../models/data.model';
 import { SessionUtil } from '../utils/session.util';
@@ -14,6 +15,7 @@ export class PokemonCatalogueService {
 private _pokemons: Pokemon[]= [];
 private _error: string="";
 private _loading: boolean =false;
+private _imageURL: string="";
 get pokemons(): Pokemon[]{
   return this._pokemons;
 }
@@ -23,18 +25,24 @@ get error(): string{
 get loading():boolean{
   return this._loading;
 }
+
   constructor(private readonly http: HttpClient) { }
   /**
    * findAllPokemons
    */
   public findAllPokemons(): void {
+    if(this._pokemons.length>0 || this.loading){
+      return;
+    }
     this._loading=true;
     this.http.get<Data>(apiPokemon)
     .pipe(
+      
      finalize(()=>{
       this._loading=false;
      }
      )
+     
     )
     .subscribe({
       next: (data: Data) => {
@@ -64,5 +72,11 @@ get loading():boolean{
 
   public pokemonByName(name: string): Pokemon | undefined{
     return this.pokemons.find((pokemon: Pokemon)=> pokemon.name)
+
   }
+  getImageUrl(url: string) {
+    const id = url.split('/').slice(-2)[0];
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+  }
+
 }

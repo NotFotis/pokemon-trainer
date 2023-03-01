@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms'
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user.model';
+import { Trainer } from 'src/app/models/trainer.model';
 import { LoginServiceService } from 'src/app/service/login-service.service';
 import { UserServiceService } from 'src/app/service/user-service.service';
 
@@ -28,7 +28,7 @@ export class LoginFormComponent {
 
     this.loginService.login(username)
       .subscribe({
-        next: (user: User) => {
+        next: (user: Trainer) => {
           //redirect to the catalogue page
           this.userService.user = user;
           this.login.emit();
