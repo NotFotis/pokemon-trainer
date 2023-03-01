@@ -29,7 +29,7 @@ export class UserServiceService {
    public inFavourites(PokemonName: string): boolean {
     if(this._user ){
 
-      // return Boolean(this.user?.pokemonCaught.find((pokemon: Pokemon) => pokemon.name === PokemonName));
+      // return Boolean(this.user?.pokemon.find((pokemon: Pokemon) => pokemon.name === PokemonName));
 
     }
     return false;
@@ -37,13 +37,13 @@ export class UserServiceService {
 
    public addToFavourites(pokemon: Pokemon): void {
     if(this._user)[
-      this._user.pokemonCaught.push(pokemon.name)
+      this._user.pokemon.push(pokemon.name)
     ]
    }
 
    public removeFromFavourites(PokemonName:string): void{
     if(this._user){
-      // this._user.pokemonCaught=this._user?.pokemonCaught.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
+      this._user.pokemon=this._user.pokemon.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
     }
    }
 }
