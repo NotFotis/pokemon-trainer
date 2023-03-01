@@ -54,8 +54,6 @@ get loading():boolean{
       },
       error: (error: HttpErrorResponse) => {
         this._error=error.message;
-        
-
       }
     })
   }
@@ -74,9 +72,4 @@ get loading():boolean{
     return this.pokemons.find((pokemon: Pokemon)=> pokemon.name)
 
   }
-  getImageUrl(url: string) {
-    const id = url.split('/').slice(-2)[0];
-    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-  }
-
 }

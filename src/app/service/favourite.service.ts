@@ -46,8 +46,14 @@ get loading(): boolean{
 
       this._loading=true;
 
+      let pokemonList = user.pokemon;           //initiating the list with the already caught pokemons
+      if (!pokemonList.includes(PokemonName)){  //if this pokemon is not at the list
+        pokemonList.push(PokemonName);          //add the pokemon to the list
+      }
+      
+
     return this.http.patch<Trainer>(`${apiUsers}/${user.id}`,{
-      favourites:[...user.pokemonCaught,pokemon]
+      pokemon: pokemonList  //add the updated list at the api
     },{
       headers
     })

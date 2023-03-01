@@ -37,7 +37,7 @@ export class UserServiceService {
 
    public addToFavourites(pokemon: Pokemon): void {
     if(this._user)[
-      this._user.pokemonCaught.push(pokemon.name)
+      this._user.pokemon.push(pokemon.name)
     ]
    }
 

@@ -32,6 +32,7 @@ ngOnInit(): void {
     this.favouriteService.addToFavourtites(this.PokemonName)
     .subscribe({
       next:(response: Trainer) =>{
+        this.isFavourite = true;
           console.log("NEXT", response);
           
       },
@@ -40,7 +41,7 @@ ngOnInit(): void {
         
       }
     })
-    //add the pokemon to the trainers' list
+    //the pokemon added to the trainers' list
     alert("Oh yeah, you got it! " + this.PokemonName );
   }
 
