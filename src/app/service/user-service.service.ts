@@ -24,6 +24,7 @@ export class UserServiceService {
   }
  
   constructor() {
+
     this._user = StorageUtil.storageRead<Trainer>(StorageKeys.User);
     SessionUtil.storageSave("collection",this._user?.pokemon); //saves the current collection of trainer pokemons
     if (SessionUtil.storageRead("collection") === undefined){ //if there are nothing saved at session storage by key "collection"
