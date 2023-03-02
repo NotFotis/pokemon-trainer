@@ -22,7 +22,7 @@ export class UserServiceService {
     StorageUtil.storageSave<Trainer>(StorageKeys.User, user!); //save the user at local storage
     this._user = user;
   }
-
+ 
   constructor() {
 
     this._user = StorageUtil.storageRead<Trainer>(StorageKeys.User);
@@ -32,6 +32,7 @@ export class UserServiceService {
     }else{                                                    //session storage has something with key "collection"
       this._session = SessionUtil.storageRead("collection");  //reads the current collection of trainers pokemon
     }
+    
     
    }
 
@@ -56,4 +57,5 @@ export class UserServiceService {
       this._user.pokemon=this._user?.pokemon.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
     }
    }
+  
 }
