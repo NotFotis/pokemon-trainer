@@ -78,6 +78,9 @@
             },
             "development": {
               "browserTarget": "ng-products:build:development"
+            },
+            "staging": {
+              "browserTarget": "your-project-name:build:staging"
             }
           },
           "defaultConfiguration": "development"
