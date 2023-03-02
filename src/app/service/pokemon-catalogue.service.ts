@@ -47,7 +47,7 @@ get loading():boolean{
         
         this._pokemons = data.results; //passing the pokemon list
         
-        SessionUtil.storageSave("pokemons", data.results); //saving the pokemon list into session storage
+        SessionUtil.storageSave("collection", data.results); //saving the pokemon list into session storage
 
       },
       error: (error: HttpErrorResponse) => {  //if an error occures
