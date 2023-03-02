@@ -1,0 +1,7 @@
+<li *ngIf="pokemon" class="mb-4 shadow bg-slate-50 rounded relative">
+    <app-catch-button [PokemonName]="pokemon.name"></app-catch-button>
+    <section class="p-4 flex">
+    <img [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + pokemon.url.split('/').slice(-2)[0] + '.png'" [alt]="pokemon.name" class="block w-60">
+    <span> {{ pokemon.name }}</span>
+    </section>
+</li>
