@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { StorageKeys } from '../enums/storage-keys.enums';
 import { Pokemon} from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
@@ -23,6 +24,7 @@ export class UserServiceService {
   }
 
   constructor() {
+
     this._user = StorageUtil.storageRead<Trainer>(StorageKeys.User);
     SessionUtil.storageSave("collection",this._user?.pokemon); //saves the current collection of trainer pokemons
     if (SessionUtil.storageRead("collection") === undefined){ //if there are nothing saved at session storage by key "collection"
