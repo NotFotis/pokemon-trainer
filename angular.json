@@ -31,6 +31,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -45,6 +51,7 @@
               ],
               
               "outputHashing": "all"
+              
             },
             "development": {
               "buildOptimizer": false,
@@ -75,13 +82,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ng-products:build:production"
+              "browserTarget": "pokemon-trainer:build:production"
             },
             "development": {
-              "browserTarget": "ng-products:build:development"
+              "browserTarget": "pokemon-trainer:build:development"
             },
             "staging": {
-              "browserTarget": "your-project-name:build:staging"
+              "browserTarget": "pokemon-trainer:build:staging"
             }
           },
           "defaultConfiguration": "development"
