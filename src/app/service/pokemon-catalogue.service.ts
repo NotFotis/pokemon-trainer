@@ -1,13 +1,13 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { finalize } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.staging';
 
 import { Pokemon } from '../models/pokemon.model';
 import { Data } from '../models/data.model';
 import { SessionUtil } from '../utils/session.util';
-const {apiPokemon}= environment;
- 
+//const {apiPokemon}= environment;
+const {apiPokemon}=environment;
 @Injectable({
   providedIn: 'root'
 })
