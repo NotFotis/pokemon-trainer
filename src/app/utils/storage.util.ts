@@ -20,4 +20,7 @@ export class StorageUtil{
             return undefined; //return undefined
         }
     }
+    public static storageRemove(key: string): void {
+        localStorage.removeItem(key);
+    }
 }

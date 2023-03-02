@@ -57,5 +57,10 @@ export class UserServiceService {
       this._user.pokemon=this._user?.pokemon.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
     }
    }
+   public logout(): void {
+    this._user = undefined;
+    StorageUtil.storageRemove(StorageKeys.User);
+    SessionUtil.storageRemove("collection");
+  }
   
 }
