@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { StorageKeys } from '../enums/storage-keys.enums';
 import { Pokemon} from '../models/pokemon.model';
 import { Trainer } from '../models/trainer.model';
@@ -21,7 +22,7 @@ export class UserServiceService {
     StorageUtil.storageSave<Trainer>(StorageKeys.User, user!); //save the user at local storage
     this._user = user;
   }
-
+ 
   constructor() {
     this._user = StorageUtil.storageRead<Trainer>(StorageKeys.User);
     SessionUtil.storageSave("collection",this._user?.pokemon); //saves the current collection of trainer pokemons
@@ -30,6 +31,7 @@ export class UserServiceService {
     }else{                                                    //session storage has something with key "collection"
       this._session = SessionUtil.storageRead("collection");  //reads the current collection of trainers pokemon
     }
+    
     
    }
 
@@ -54,4 +56,5 @@ export class UserServiceService {
       this._user.pokemon=this._user?.pokemon.filter((pokemon: Pokemon) => pokemon.name!==PokemonName)
     }
    }
+  
 }

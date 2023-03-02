@@ -22,6 +22,7 @@ export class ProfilePage implements OnInit {
     return []                              //trainer does not exists, so return an empty list 
   }
   
+  
 constructor( private userService: UserServiceService ){}
 
 ngOnInit(): void {}
