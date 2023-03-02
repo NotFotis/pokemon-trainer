@@ -1,8 +1,29 @@
 # Pokémon Trainer 
-This web application allows users to collect Pokémon from the PokeAPI and view them in their collection. Users must enter their username before being able to collect any Pokémon.
+This web application allows users to collect Pokémon from the PokeAPI and view them in their collection. Users must enter their username before being able to collect any Pokémon.It consists of three pages: Landing Page, Trainer Page and a Pokemon Catalogue Page.
+
+## Landing Page
+The first thing a user should see is the “Login page” where the user must be able to enter their “Trainer” name.
+There should be a button that saves the Trainer name to the Trainer API and in local- or sessionStorage. The app must
+then be redirected to the main page, the Pokémon Catalogue page.
+The users may NOT be able to see the Pokémon Catalogue without have a Trainer name stored in local- or sessionStorage.
+Use a Guard service to achieve this functionality.
+If username exists in local- or sessionStorage, you may automatically redirect from the landing page to the Pokémon
+Catalogue page.
+You can first check if the username exists in the Trainer API before redirecting to the Catalogue page.
+
+## Trainer Page
+A user may only view this page if there is a Trainer name that exists in localStorage. Please redirect a user back to the
+Landing page if they do not have a Trainer name stored in localStorage. Use a Guard service to achieve this functionality.
+The Trainer page should list the Pokémon that the trainer has collected. For each collected Pokémon, display the Pokémon
+name and image.
+A user must also be able to remove a Pokémon from their collection from the Trainer page.
+
+## Pokémon Catalogue Page
+The Catalogue page may NOT be viewed if there is no Trainer name stored in localStorage. It uses a Guard service to achieve this functionality. The Catalogue page lists the Pokémon name and avatar*. It gets all the Pokémon and stores it in sessionStorage. When the page is reloaded it reads from sessionStorage rather than the API. This way, the PokeAPI is not constantly hit with requests every time you save your files.
+We've added a button on each Pokémon that, when clicked, adds the Pokémon to the trainer’s collection. This updatew the Trainer API with the collected Pokémon. 
 
 # Getting Started
-# Prerequisites
+## Prerequisites
 Before you can run this app, you'll need to have the following tools installed:
 
 Node.js (LTS – Long Term Support version)
