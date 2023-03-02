@@ -11,6 +11,6 @@ export class LoginPage {
   constructor(private readonly router: Router) {}
 
   handleLogin(): void {
-    this.router.navigateByUrl("/pokemon");
+    this.router.navigateByUrl("/pokemon"); //when logs in, redirect to pokemon catalogue page
   }
 }

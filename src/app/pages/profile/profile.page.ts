@@ -11,20 +11,19 @@ import { UserServiceService } from 'src/app/service/user-service.service';
   styleUrls: ['./profile.page.css']
 })
 export class ProfilePage implements OnInit {
-  get user(): Trainer | undefined{
 
-    return this.userService.user;
-  }
+  get user(): Trainer | undefined{ return this.userService.user; } //getter for the trainer
+
+  /* getter for the pokemon */
   get pokemon(): Pokemon[] {
-    if(this.userService.user){
-      return this.userService.user.pokemon
+    if(this.userService.user){             //if trainer exists
+      return this.userService.user.pokemon //return the pokemon collection of the trainer
     }
-    return []
+    return []                              //trainer does not exists, so return an empty list 
   }
-constructor(
-  private userService: UserServiceService
-){}
-ngOnInit(): void {
-    
-}
+  
+constructor( private userService: UserServiceService ){}
+
+ngOnInit(): void {}
+
 }

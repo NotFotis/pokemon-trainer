@@ -14,10 +14,6 @@ export class CatchButtonComponent implements OnInit{
   public isFavourite: boolean = false;
 
   @Input() PokemonName: string = ""; //initiate the number to none id
-
-  // get loading(): boolean{
-  //   return this.favouriteService.loading;
-  // }
   
 constructor(
   private userService: UserServiceService,
@@ -26,6 +22,7 @@ constructor(
 
 ngOnInit(): void {
     //inputs are resolved
+    //checking for every pokemon if it is already in collection of the trainer
     this.isFavourite = this.userService.inFavourites(this.PokemonName);
 }
 
@@ -35,6 +32,7 @@ ngOnInit(): void {
     .subscribe({
       next:(response: Trainer) =>{
         this.loading=false;
+        window.location.reload();
           console.log("NEXT", response);
           
       },
@@ -44,7 +42,12 @@ ngOnInit(): void {
       }
     })
     //the pokemon added to the trainers' list
-    alert("Oh yeah, you got it! " + this.PokemonName );
+    //Checking if the selected pokemon is at collection list to show the proper alert message 
+    if( this.isFavourite ){  //it is at the collection  
+      alert(`You have succesfully released the pokemon ${this.PokemonName} from your collection!`);
+    }else{                   //it is not at the collection 
+      alert(`Oh yeah, you got it! Now ${this.PokemonName} belongs to your pokemons colllection!`);
+    }
   }
 
 }

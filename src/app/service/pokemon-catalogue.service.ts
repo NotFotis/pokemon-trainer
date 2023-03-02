@@ -26,9 +26,8 @@ get loading():boolean{
 }
 
   constructor(private readonly http: HttpClient) { }
-  /**
-   * findAllPokemons
-   */
+
+  /* loads the pokemons from the api */
   public findAllPokemons(): void {
     if(this._pokemons.length>0 || this.loading){
       return;
@@ -37,8 +36,8 @@ get loading():boolean{
     this.http.get<Data>(apiPokemon)
     .pipe(
       
-     finalize(()=>{
-      this._loading=false;
+     finalize(()=>{        // when is done,
+      this._loading=false; // end the loading... message
      }
      )
      
@@ -51,24 +50,26 @@ get loading():boolean{
         SessionUtil.storageSave("pokemons", data.results); //saving the pokemon list into session storage
 
       },
-      error: (error: HttpErrorResponse) => {
-        this._error=error.message;
+      error: (error: HttpErrorResponse) => {  //if an error occures
+        this._error=error.message;            //pass the error message
       }
     })
   }
 
+  /* loading pokemons from session storage */
   public pokemonsFromSession(data: Pokemon[] | undefined): void {
     this._loading=true;
 
-    if (data !== undefined){
-      this._pokemons = data;
+    if (data !== undefined){  //if data exists
+      this._pokemons = data;  //pass the data to pokemons
     }
 
     this._loading=false;
   }
 
+  /* searching if a pokemon exists by his name and returns the pokemon or undefined if pokemon does not exists*/
   public pokemonByName(PokemonName: string): Pokemon | undefined{
-    return this._pokemons.find((pokemon: Pokemon)=> pokemon.name===PokemonName)
+    return this._pokemons.find((pokemon: Pokemon)=> pokemon.name===PokemonName) 
 
   }
 }
