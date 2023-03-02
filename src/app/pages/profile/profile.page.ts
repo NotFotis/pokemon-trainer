@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Data } from '@angular/router';
+import { Data, Router } from '@angular/router';
 import { Result } from 'src/app/models/data.model';
 import { Pokemon } from 'src/app/models/pokemon.model';
 import { Trainer } from 'src/app/models/trainer.model';
@@ -22,8 +22,14 @@ export class ProfilePage implements OnInit {
     return []                              //trainer does not exists, so return an empty list 
   }
   
-  
-constructor( private userService: UserServiceService ){}
+  logout() {
+    this.userService.logout();  // call the logout method of your UserServiceService
+    this.router.navigateByUrl("/login");
+  }
+constructor( 
+  private userService: UserServiceService,
+  private readonly router: Router
+  ){}
 
 ngOnInit(): void {}
 

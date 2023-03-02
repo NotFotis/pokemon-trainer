@@ -20,4 +20,7 @@ export class SessionUtil{
             return undefined; //return undefined
         }
     }
+    public static storageRemove(key: string): void {
+        sessionStorage.removeItem(key);
+    }
 }
