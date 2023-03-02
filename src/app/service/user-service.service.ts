@@ -26,11 +26,11 @@ export class UserServiceService {
   constructor() {
 
     this._user = StorageUtil.storageRead<Trainer>(StorageKeys.User);
-    SessionUtil.storageSave("collection",this._user?.pokemon); //saves the current collection of trainer pokemons
-    if (SessionUtil.storageRead("collection") === undefined){ //if there are nothing saved at session storage by key "collection"
+    SessionUtil.storageSave("pokemons",this._user?.pokemon); //saves the current collection of trainer pokemons
+    if (SessionUtil.storageRead("pokemons") === undefined){ //if there are nothing saved at session storage by key "collection"
       this._session = "";                                     //return an empty string (undefined handling)
     }else{                                                    //session storage has something with key "collection"
-      this._session = SessionUtil.storageRead("collection");  //reads the current collection of trainers pokemon
+      this._session = SessionUtil.storageRead("pokemons");  //reads the current collection of trainers pokemon
     }
     
     
@@ -61,6 +61,7 @@ export class UserServiceService {
     this._user = undefined;
     StorageUtil.storageRemove(StorageKeys.User);
     SessionUtil.storageRemove("collection");
+    SessionUtil.storageRemove("pokemons");
   }
   
 }

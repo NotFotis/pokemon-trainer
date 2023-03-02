@@ -22,10 +22,10 @@ export class AppComponent implements OnInit{
 
         //checking if there are pokemons data at session storage
         //if there are data at session, load the data from there and dont fetch the api
-        if (SessionUtil.storageRead("pokemons") === undefined){                         //There are not data at session storage,
+        if (SessionUtil.storageRead("collection") === undefined){                         //There are not data at session storage,
           this.pokemonService.findAllPokemons();                                        // so take the data from api.
         }else{                                                                          //Data exists at session storage,
-          this.pokemonService.pokemonsFromSession(SessionUtil.storageRead("pokemons")); //so load the data from storage
+          this.pokemonService.pokemonsFromSession(SessionUtil.storageRead("collection")); //so load the data from storage
         }
 
         //user exists so navigate the trainer at pokemon catalogue page
